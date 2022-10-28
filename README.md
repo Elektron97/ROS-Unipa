@@ -1,2 +1,2 @@
 # ROS-Unipa
-Materiale per il corso di "Mobile &amp; Distributed Robotics" del Prof. Adriano Fagiolini.
+Materiale del corso di "Mobile & Distributed Robotics" del Prof. Adriano Fagiolini, relativo alla parte di **R**obot **O**perating **S**ystem (ROS).
