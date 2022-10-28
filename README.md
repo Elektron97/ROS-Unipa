@@ -32,9 +32,9 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 2. From Github website, you can download .zip file.
 
 ## 5) References and Books
-[^1]: ROS official tutorials, avaible [online](http://wiki.ros.org/ROS/Tutorials).
+[1]: ROS official tutorials, avaible [online](http://wiki.ros.org/ROS/Tutorials).
 
-[^2]: Robot Operating System for Absolute Beginners, books avaible on [books](docs/books/lentin-joseph-robot-operating-system-ros-for-absolute-2018.pdf) folder.
+[2]: Robot Operating System for Absolute Beginners, books avaible on [books](docs/books/lentin-joseph-robot-operating-system-ros-for-absolute-2018.pdf) folder.
 
-[^3]: Mastering ROS for Robotics Programming, books avaible on [books](docs/books/Lentin_Joseph_Jonathan_Cacace_Mastering_ROS_for_Robotics_Programming.pdf) folder.
+[3]: Mastering ROS for Robotics Programming, books avaible on [books](docs/books/Lentin_Joseph_Jonathan_Cacace_Mastering_ROS_for_Robotics_Programming.pdf) folder.
 
