@@ -24,12 +24,12 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 ## 3) Requisites
 - [ ] Basic knowledge of Programming (C language and OOP concepts).
 - [ ] Ubuntu 20.04.
-- [ ] Fondamentals of Robotics. 
+- [ ] Fondamentals of Robotics.
 
 ## 4) Download this repository
 1. From terminal:
 `$ git clone https://github.com/Elektron97/ROS-Unipa.git`.
-2. From Github website, you can download .zip file.
+2. From Github website, you can download `.zip` file.
 
 ## 5) References and Books
 [1]: ROS official tutorials, avaible [online](http://wiki.ros.org/ROS/Tutorials).
