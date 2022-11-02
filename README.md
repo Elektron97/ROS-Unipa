@@ -1,11 +1,11 @@
 # ROS-Unipa
 Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distributed Robotics*" course held by Prof. Adriano Fagiolini.
 ### What will you learn:
-1. C++ and Python languages.
+1. Robot Operating System (ROS).
 2. Git.
-3. Robot Operating System (ROS).
-4. URDF and Gazebo.
-5. Using ROS with real robots with Raspberry.
+3. URDF and Gazebo.
+4. Using ROS with real robots with Raspberry.
+
 ## Contents:
 * [1. Course Organization](#1-course-organization)
 * [2. Contacts](#2-contacts)
