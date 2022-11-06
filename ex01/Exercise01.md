@@ -1,6 +1,6 @@
 # Exercise 1: Simulate Kinematic Model of Unicycle
-
-$$ \dot{q}(t) = S(q) \ni(t) $$
+**To do**
+$$ \dot{q}(t) = S(q) \nu(t) $$
 
 Create a pkg:
 catkin_create_pkg kinematic_unicycle roscpp std_msgs geometry_msgs
