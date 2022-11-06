@@ -23,10 +23,11 @@ $$
 In order to implement the equation in our node, we have to discretize this differential equation. Using Forward Euler, we can write:
 $$\dot{q} \approx \frac{q(k+1) - q(k)}{T_s}$$
 
-Finally, we can discretize the Kinematic Model of Unicycle:
+where $T_s$ is the sampling period. Finally, we can discretize the Kinematic Model of Unicycle:
+
 $$q(k + 1) = q(k) + T_s \ S(q) \ \nu(k)$$
 
-where $T_s$ is the sampling period. Expanding the previous equation:
+Expanding the previous equation:
 
 $$\begin{cases}
 x_{k+1} = x_k + T_s \ \cos(\theta_k) v_k \\
