@@ -59,7 +59,7 @@ int main(int argc, char **argv)
     //Sub Objects
     ros::Subscriber sub_ni = node_obj.subscribe("/cmd_vel", QUEUE_SIZE, vel_callBack);
 
-    // Output:
+    // Screen Output:
     ROS_INFO("**************************");
     ROS_INFO("Model Node activated.");
     ROS_INFO("Init Pose of Unicycle:");
@@ -82,8 +82,8 @@ int main(int argc, char **argv)
         ros::spinOnce();
 
         // Compute Kinematics
-        // TC: q_dot(t) = A(q) * ni(t)
-        // TD: (Euler1) q(k+1) = q(k) + Ts*A(q(k))*ni(k)
+        // TC: q_dot(t) = S(q) * ni(t)
+        // TD: (Euler1) q(k+1) = q(k) + Ts*S(q(k))*ni(k)
         state_space = kinematic_model(state_space, v, w);
 
         // Publish updated state space
