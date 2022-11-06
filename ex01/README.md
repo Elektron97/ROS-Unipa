@@ -38,6 +38,8 @@ y_{k+1} = y_k + T_s \ \sin(\theta_k) v_k \\
 The theoretical part is over, let's start to code.
 
 ## 2) Organize the code
+The noide that we want to write, has as input $\nu = [v \quad \omega]^T$ and output $q = [x \quad y \quad \theta]^T$. 
+
 
 ## 3) Create pkg
 
