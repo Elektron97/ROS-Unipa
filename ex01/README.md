@@ -44,13 +44,12 @@ The noide that we want to write, has as input $\nu = [v \quad \omega]^T$ and out
 
 The messages definition can be found on the previous links.
 
-
 ## 3) Create pkg
-
-Create a pkg:
-catkin_create_pkg kinematic_unicycle roscpp std_msgs geometry_msgs
-
-Write Node...
+Let's create the package. Type in the terminal:
+```
+~/catkin_ws/src/ROS-Unipa$ catkin_create_pkg kinematic_unicycle roscpp std_msgs geometry_msgs
+```
+Switch in `src` folder inside the `kinematic_unicycle` pkg. Create a new file called `model.cpp` and write the node. You can find the code [here](other_file.md). 
 
 Modify CMake
 
