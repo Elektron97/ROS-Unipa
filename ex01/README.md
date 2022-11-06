@@ -21,9 +21,7 @@ $$
 $$
 
 In order to implement the equation in our node, we have to discretize this differential equation. Using Forward Euler, we can write:
-$$
-\dot{q} \approx \frac{q(k+1) - q(k)}{T_s}
-$$
+$$\dot{q} \approx \frac{q(k+1) - q(k)}{T_s}$$
 
 Finally, we can discretize the Kinematic Model of Unicycle:
 $$
@@ -37,6 +35,9 @@ y_{k+1} = y_k + T_s \ \sin(\theta_k) v_k \\
 \theta_{k+1} = \theta_{k} + T_s \ \omega_k
 \end{cases}
 $$
+The theoretical part is over, let's start to code.
+
+## 2) Organize the code
 
 
 Create a pkg:
