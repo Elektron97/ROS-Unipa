@@ -11,10 +11,12 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 * [2. Contacts](#2-contacts)
 * [3. Requisites](#3-requisites)
 * [4. Download this repository](#4-download-this-repository)
+* [5. Exercises](#5-exercises)
+* [6. References and Books](#6-references-and-books)
 
 ## 1) Course Organization
-- [ ] **Week 7**
-- [ ] **Week 9**
+- [ ] **Week 7**: ROS Concepts: Nodes, Messages, Topics, Services and Bags.
+- [ ] **Week 9**: URDF and Gazebo.
 
 ## 2) Contacts
 - [Institutional Email](mailto:Daniele.Caradonna@santannapisa.it)
@@ -31,7 +33,10 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 `$ git clone https://github.com/Elektron97/ROS-Unipa.git`.
 2. From Github website, you can download `.zip` file.
 
-## 5) References and Books
+## 5) Exercises
+- [ ] Exercise 1: Simulate Kinematic Model of Unicycle
+
+## 6) References and Books
 [1]: ROS official tutorials, avaible [online](http://wiki.ros.org/ROS/Tutorials).
 
 [2]: Robot Operating System for Absolute Beginners, books avaible on [books](docs/books/lentin-joseph-robot-operating-system-ros-for-absolute-2018.pdf) folder.
