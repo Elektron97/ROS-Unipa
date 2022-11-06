@@ -80,7 +80,7 @@ Then, type:
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 ## 6) Creating Launch file
-Open 3 terminals is annoying. To avoid it, we can write a `.launch` file, that allow to launch more nodes. Inside the `kinematic_unicycle` pkg, create a `launch` folder and inside its, create `keyboard_control.launch`. You can find the code [here](kinematic_model/launch/keyboard_control.launch). Finally, to launch the entire project, type in the terminal:
+Open 3 terminals is annoying. To avoid it, we can write a `.launch` file, that allow to launch more nodes. Inside the `kinematic_unicycle` pkg, create a `launch` folder and inside its, create `keyboard_control.launch`. You can find the code [here](kinematic_unicycle/launch/keyboard_control.launch). Finally, to launch the entire project, type in the terminal:
 
 `$ roslaunch kinematic_model keyboard_control.launch`
 
