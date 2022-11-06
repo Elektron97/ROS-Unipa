@@ -62,7 +62,28 @@ After this, type in the terminal:
 ```
 ~/catkin_ws$ catkin_make
 ```
+## 5) Execute the node
+Open a terminal and type:
+```
+roscore
+```
+This instruction start rosmaster. Open another terminal and type:
+```
+rosrun kinematic_unicycle model
+```
+To control the simulated unicycle, execute the `teleop_twist_keyboard` [node](http://wiki.ros.org/teleop_twist_keyboard). To download it:
+```
+sudo apt-get ros-noetic-teleop_twist_keyboard
+```
+Then, type:
+```
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+```
+## 6) Creating Launch file
+Open 3 terminals is annoying. To avoid it, we can write a `.launch` file, that allow to launch more nodes. Inside the `kinematic_unicycle` pkg, create a `launch` folder and inside its, create `keyboard_control.launch`. You can find the code [here](kinematic_model/launch/keyboard_control.launch). Finally, to launch the entire project, type in the terminal:
 
-Creating Launch file
+`$ roslaunch kinematic_model keyboard_control.launch`
 
-`$ git clone https://github.com/Elektron97/ROS-Unipa.git`.
+## 7) Homework
+- [ ] Create a more complex control node, implementing a classic controller like path following or trajectory tracking.
+- [ ] Create a sensor node that subscribe the state space of model node and add a white noise.
