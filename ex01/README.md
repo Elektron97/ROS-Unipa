@@ -38,7 +38,11 @@ y_{k+1} = y_k + T_s \ \sin(\theta_k) v_k \\
 The theoretical part is over, let's start to code.
 
 ## 2) Organize the code
-The noide that we want to write, has as input $\nu = [v \quad \omega]^T$ and output $q = [x \quad y \quad \theta]^T$. 
+The noide that we want to write, has as input $\nu = [v \quad \omega]^T$ and output $q = [x \quad y \quad \theta]^T$. We have to choice the ROS msgs for this node. A choice can be:
+- Input: [geometry_msgs/Twist](https://docs.ros.org/en/api/geometry_msgs/html/msg/Twist.html)
+- Output: [geometry_msgs/Pose2D](https://docs.ros.org/en/api/geometry_msgs/html/msg/Pose2D.html)
+
+The messages definition can be found on the previous links.
 
 
 ## 3) Create pkg
