@@ -49,9 +49,9 @@ Let's create the package. Type in the terminal:
 ```
 ~/catkin_ws/src/ROS-Unipa$ catkin_create_pkg kinematic_unicycle roscpp std_msgs geometry_msgs
 ```
-Switch in `src` folder inside the `kinematic_unicycle` pkg. Create a new file called `model.cpp` and write the node. You can find the code [here](kinematic_unicycle/src/model.cpp). 
+Switch in `src` folder inside the `kinematic_unicycle` pkg. Create a new file called `model.cpp` and write the node. You can find the code [here](kinematic_unicycle/src/model.cpp). After saving the `.cpp` node, open the CMake file. After clear from the automatic comments (`#i'm a comment`), add these lines to build our node.
 
-Modify CMake
+
 
 Creating Launch file
 
