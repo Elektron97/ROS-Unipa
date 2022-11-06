@@ -14,7 +14,7 @@
 /*-------- DEFINE --------*/
 // ROS Node parameters
 #define QUEUE_SIZE 10
-#define FREQUENCY 1000
+#define FREQUENCY 1000.0
 
 // Init Diff. Equation
 #define X0 0.0
@@ -40,7 +40,9 @@ void vel_callBack(const geometry_msgs::Twist::ConstPtr& msg)
     // Update Control Input
     v = msg->linear.x;
     w = msg->angular.z;
+    
     //ROS_INFO("Control Input received.");
+    //ROS_INFO("v: %f, w: %f", v, w);
 }
 
 /*-------- MAIN --------*/
@@ -55,7 +57,7 @@ int main(int argc, char **argv)
     ros::Publisher pub_state = node_obj.advertise<geometry_msgs::Pose2D>("/state_space", QUEUE_SIZE);
 
     //Sub Objects
-    ros::Subscriber sub_ni = node_obj.subscribe("/vel_control", QUEUE_SIZE, vel_callBack);
+    ros::Subscriber sub_ni = node_obj.subscribe("/cmd_vel", QUEUE_SIZE, vel_callBack);
 
     // Output:
     ROS_INFO("**************************");

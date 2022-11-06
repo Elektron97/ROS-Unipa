@@ -1,0 +1,8 @@
+<!--Launch for Keyboard Control of Unicycle-->
+
+<launch>
+    <!--Launch model node-->
+    <node name="model" pkg="kinematic_unicycle" type="model" output="screen"/>
+    <!--Launch keyboard control node-->
+    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen"/>
+</launch>
