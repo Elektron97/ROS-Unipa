@@ -5,4 +5,6 @@ catkin_create_pkg kinematic_unicycle roscpp std_msgs geometry_msgs
 
 Write Node...
 
-Modify CMake and package.xml
+Modify CMake
+
+Creating Launch file

@@ -14,7 +14,7 @@
 /*-------- DEFINE --------*/
 // ROS Node parameters
 #define QUEUE_SIZE 10
-#define FREQUENCY 1000.0
+#define FREQUENCY 1000.0 //float type
 
 // Init Diff. Equation
 #define X0 0.0
@@ -64,6 +64,7 @@ int main(int argc, char **argv)
     ROS_INFO("Model Node activated.");
     ROS_INFO("Init Pose of Unicycle:");
     ROS_INFO("[x0: %f, y0: %f, theta0: %f", X0, Y0, THETA0);
+    ROS_INFO("**************************");
 
     // --- Loop Init --- //
     ros::Rate loop_rate(FREQUENCY);
