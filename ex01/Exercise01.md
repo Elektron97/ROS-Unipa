@@ -1,5 +1,4 @@
 # Exercise 1: Simulate Kinematic Model of Unicycle
-**To do**
 $$ \dot{q}(t) = S(q) \nu(t) $$
 
 Create a pkg:
