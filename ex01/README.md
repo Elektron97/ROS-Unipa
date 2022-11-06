@@ -24,21 +24,19 @@ In order to implement the equation in our node, we have to discretize this diffe
 $$\dot{q} \approx \frac{q(k+1) - q(k)}{T_s}$$
 
 Finally, we can discretize the Kinematic Model of Unicycle:
-$$
-q(k + 1) = q(k) + T_s \ S(q) \ \nu(k)
-$$
+$$q(k + 1) = q(k) + T_s \ S(q) \ \nu(k)$$
 
-$$
-\begin{cases}
+$$\begin{cases}
 x_{k+1} = x_k + T_s \ \cos(\theta_k) v_k \\
 y_{k+1} = y_k + T_s \ \sin(\theta_k) v_k \\
 \theta_{k+1} = \theta_{k} + T_s \ \omega_k
-\end{cases}
-$$
+\end{cases}$$
+
 The theoretical part is over, let's start to code.
 
 ## 2) Organize the code
 
+## 3) Create pkg
 
 Create a pkg:
 catkin_create_pkg kinematic_unicycle roscpp std_msgs geometry_msgs
