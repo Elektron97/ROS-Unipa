@@ -51,4 +51,7 @@ The dependencies are:
 
 After package creation, your `hello_world_pkg` folder, you can write your nodes in `src` folder.
 
+## 4) Publisher Node:
+You can find the entire node [here](hello_world_pkg/src/publisher.cpp).
+
 
