@@ -69,3 +69,8 @@ Here, the name chosen for our node is `talker`.
 ```
 ros::NodeHandle node_obj;
 ```
+- After this, we can create the pub object. 
+```
+ros::Publisher string_pub = node_obj.advertise<std_msgs::String>("string_topic", QUEUE_SIZE);
+```
+This object tells the master that we are going to be publishing a message of type `std_msgs/String` on the topic `string_topic`. The `QUEUE_SIZE` is the size of a publishing queue. If we are publishing to quickly, it will buffer up a maximum of `QUEUE_SIZE` messages.
