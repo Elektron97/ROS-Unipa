@@ -1,0 +1,8 @@
+<!-- Launch file for Publisher and Subscriber Nodes-->
+<launch>
+    <!-- Launch Publisher Node -->
+    <node name="publisher" pkg="hello_world_pkg" type="publisher" output="screen"/>
+
+    <!-- Launch Subscriber Node -->
+    <node name="subscriber" pkg="hello_world_pkg" type="subscriber" output="screen"/>
+</launch>
