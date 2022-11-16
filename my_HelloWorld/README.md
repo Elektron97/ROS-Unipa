@@ -120,7 +120,7 @@ This instruction **start ROS Master**. Open another terminal and type:
 rosrun hello_world_pkg publisher
 ```
 
-## Create Subscriber Node
+## 5) Subscriber Node
 The code is similar, but with important differences:
 - You have to define a `ros::Subscriber` object, writing:
 ```
@@ -156,4 +156,4 @@ Finally, you can build the package, typing:
 catkin_make
 ```
 
-## Execute Publisher and Subscriber Nodes
+## 6) Execute Publisher and Subscriber Nodes
