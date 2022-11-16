@@ -74,3 +74,7 @@ ros::NodeHandle node_obj;
 ros::Publisher string_pub = node_obj.advertise<std_msgs::String>("string_topic", QUEUE_SIZE);
 ```
 This object tells the master that we are going to be publishing a message of type `std_msgs/String` on the topic `string_topic`. The `QUEUE_SIZE` is the size of a publishing queue. If we are publishing to quickly, it will buffer up a maximum of `QUEUE_SIZE` messages.
+- Now we can define `ros::Rate` object, that allows to specify a frequency of your loop.
+```
+ros:::Rate loop_rate(NODE_FREQUENCY)
+```
