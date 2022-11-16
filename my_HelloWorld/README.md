@@ -62,7 +62,10 @@ You can find the entire node [here](hello_world_pkg/src/publisher.cpp). This nod
 First library includes the ROS client library, useful for the creation of a node, communications, parameters and so on. The second one imports the primitive type of msgs `string`. 
 - After create the `main` with the arguments (`argc`, `argv`), we can init the node.
 ```
-ros::init(argc, argv, "talker")
+ros::init(argc, argv, "talker");
 ```
 Here, the name chosen for our node is `talker`. 
-
+- We have to also define the `NodeHandle` object. This object allows us to publish, subscribe, get parameters and so on.
+```
+ros::NodeHandle node_obj;
+```
