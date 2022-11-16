@@ -96,3 +96,26 @@ loop_rate.sleep();
 ```
 ROS_INFO("%s | %d-th msg", msg.data.c_str(), count);
 ```
+
+#### Build Publisher Node:
+To build your node, you have to modify the `CMakeLists.txt` file. So type at the bottom of the file:
+```
+# This will create executable of the node
+add_executable(publisher src/publisher.cpp)
+# This will link executable to the appropriate libraries
+target_link_libraries(publisher ${catkin_LIBRARIES})
+```
+After this, switch in the `catkin_ws` directory and type:
+```
+catkin_make
+```
+
+#### Execute the publisher node:
+Open a terminal and type:
+```
+roscore
+```
+This instruction **start ROS Master**. Open another terminal and type:
+```
+rosrun hello_world_pkg publisher
+```
