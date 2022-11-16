@@ -119,3 +119,41 @@ This instruction **start ROS Master**. Open another terminal and type:
 ```
 rosrun hello_world_pkg publisher
 ```
+
+## Create Subscriber Node
+The code is similar, but with important differences:
+- You have to define a `ros::Subscriber` object, writing:
+```
+ros::Subscriber string_sub = node_obj.subscribe("string_topic", QUEUE_SIZE, string_callBack);
+```
+In this definition, you have to indicate the topic name (`string_topic`), the `QUEUE_SIZE` and finally the callback function (`string_callBack`). 
+- The callback function is a set of instructions executed when a topic is subscribed. Typically this function extracts the messages received and updates the inner global variables of node.
+```
+void string_callBack(const std_msgs::String::ConstPtr& msg)
+{
+    ROS_INFO("I heard: [%s]", msg->data.c_str());
+}
+```
+In this case, the `string_callBack` simply extracts the msg and print the string.
+
+- In the main, in a subscriber node, you have to write:
+```
+ros::spin();
+```
+This instruction will enter in a loop, waiting and subscribing the topics.
+
+### Build Subscriber Node
+As before, you have to add in the CMake file, the following code:
+```
+## SUBSCRIBER
+# This will create executable of the node
+add_executable(subscriber src/subscriber.cpp)
+# This will link executable to the appropriate libraries
+target_link_libraries(subscriber ${catkin_LIBRARIES})
+```
+Finally, you can build the package, typing:
+```
+catkin_make
+```
+
+## Execute Publisher and Subscriber Nodes
