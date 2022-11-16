@@ -97,7 +97,7 @@ loop_rate.sleep();
 ROS_INFO("%s | %d-th msg", msg.data.c_str(), count);
 ```
 
-#### Build Publisher Node:
+### Build Publisher Node:
 To build your node, you have to modify the `CMakeLists.txt` file. So type at the bottom of the file:
 ```
 # This will create executable of the node
@@ -110,7 +110,7 @@ After this, switch in the `catkin_ws` directory and type:
 catkin_make
 ```
 
-#### Execute the publisher node:
+### Execute the publisher node:
 Open a terminal and type:
 ```
 roscore
