@@ -49,6 +49,6 @@ The dependencies are:
 - `roscpp`: This is the C++ implementatioin of ROS. This client library implements ROS topics, services and so on.
 - `std_msgs`: This package contains the basic definition of ROS primitive data types, such as integer, float, string, etc.
 
-After package creation, your `hello_world_pkg` folder, is similar to this:
+After package creation, your `hello_world_pkg` folder, you can write your nodes in `src` folder.
 
 
