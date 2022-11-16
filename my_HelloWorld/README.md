@@ -41,4 +41,11 @@ Now that the workspace is configured, we can create a new pkg. To do that, switc
 catkin_create_pkg package_name [dependency1] [dependency2]
 ```
 
-In our case, 
+In our case, type:
+```
+catkin_create_pkg hello_world_pkg roscpp std_msgs
+```
+The dependencies are:
+- `roscpp`: This is the C++ implementatioin of ROS. This client library implements ROS topics, services and so on.
+- `std_msgs`: This package contains the basic definition of ROS primitive data types, such as integer, float, string, etc.
+
