@@ -157,3 +157,32 @@ catkin_make
 ```
 
 ## 6) Execute Publisher and Subscriber Nodes
+To execute the entire project, you have to open 3 terminals. 
+1. In the first, type `roscore` command, to activate the ROS master.
+2. Type `rosrun hello_world_pkg publisher` to run the publisher node.
+3. Type `rosrun hello_world_pkg subscriber` to run the subscriber node.
+
+You can observe that the nodes communicate each other.
+
+## 7) Launch the entire project in one terminal
+Opern 3 terminals can be annoyed. We can avoid this, writing a `.launch` file. This file launches the nodes for us, in a single terminal. To do that, create in the pkg folder aq new directory `launch`.
+```
+cd ~/catkin_ws/src/hello_world_pkg
+mkdir launch
+```
+Then write your `pub_sub.launch`, copying this:
+```
+<!-- Launch file for Publisher and Subscriber Nodes-->
+<launch>
+    <!-- Launch Publisher Node -->
+    <node name="publisher" pkg="hello_world_pkg" type="publisher" output="screen"/>
+
+    <!-- Launch Subscriber Node -->
+    <node name="subscriber" pkg="hello_world_pkg" type="subscriber" output="screen"/>
+</launch>
+```
+
+To launch the entire project, type in the terminal:
+```
+roslaunch hello_world_pkg pub_sub.launch
+```
