@@ -78,3 +78,21 @@ This object tells the master that we are going to be publishing a message of typ
 ```
 ros:::Rate loop_rate(NODE_FREQUENCY)
 ```
+- Define our msg object:
+```
+std_msgs::String msg;
+msg.data = "Hello World!"
+```
+- We can write the **main loop**. This loop is written as: `while(ros::ok())`. This instruction is essentially `while(1)`, but kill the node if you click Ctrl+C in the terminal. In this loop you have to:
+- Publish your msg:
+```
+string_pub.publish(msg);
+```
+- Sleep for the necessary time, in order to mantain the node frequency constant.
+```
+loop_rate.sleep();
+```
+- Finally, to visualization purpose, we can plot some information with `ROS_INFO()` function. It works like `printf()` function. So, if we can plot the Hello World string and the counter, we have to write:
+```
+ROS_INFO("%s | %d-th msg", msg.data.c_str(), count);
+```
