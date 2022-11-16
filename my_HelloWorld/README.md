@@ -25,4 +25,13 @@ catkin_init_workspace
 ```
 
 ## 2) Build your new workspace
+To build you workspace, type in the terminal:
+```
+catkin_make
+```
+This last command will create a `devel` and `build` directory in the `catkin_ws`. To add the configurated ROS workspace to the ROS environment, type:
 
+```
+echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+ source ~/.bashrc
+```
