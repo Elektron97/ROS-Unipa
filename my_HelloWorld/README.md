@@ -33,5 +33,12 @@ This last command will create a `devel` and `build` directory in the `catkin_ws`
 
 ```
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
- source ~/.bashrc
+source ~/.bashrc
 ```
+## 3) Create yor First ROS pkg
+Now that the workspace is configured, we can create a new pkg. To do that, switch in the `src` folder (`cd ~/catkin_ws/src`) and type this command, substituing `package_name` with your package name and the dependencies.
+```
+catkin_create_pkg package_name [dependency1] [dependency2]
+```
+
+In our case, 
