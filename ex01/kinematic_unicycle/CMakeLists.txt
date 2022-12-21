@@ -18,3 +18,8 @@ include_directories(
 add_executable(model src/model.cpp)
 # This will link executable to the appropriate libraries
 target_link_libraries(model ${catkin_LIBRARIES})
+
+# This will create executable of the node
+add_executable(controller src/controller.cpp)
+# This will link executable to the appropriate libraries
+target_link_libraries(controller ${catkin_LIBRARIES})

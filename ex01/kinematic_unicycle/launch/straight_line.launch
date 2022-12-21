@@ -1,0 +1,9 @@
+<launch>
+    <!-- Include Parameters in ROS Parameters Server-->
+    <rosparam file = "$(find kinematic_unicycle)/config/params.yaml"/>
+
+    <!--Launch model node-->
+    <node name="model" pkg="kinematic_unicycle" type="model" output="screen"/>
+    <!--Launch keyboard control node-->
+    <node name="controller" pkg="kinematic_unicycle" type="controller" output="screen"/>
+</launch>
