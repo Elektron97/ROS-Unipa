@@ -73,7 +73,7 @@ rosrun kinematic_unicycle model
 ```
 To control the simulated unicycle, execute the `teleop_twist_keyboard` [node](http://wiki.ros.org/teleop_twist_keyboard). To download it:
 ```
-sudo apt-get ros-noetic-teleop_twist_keyboard
+sudo apt-get install ros-noetic-teleop-twist-keyboard
 ```
 Then, type:
 ```
