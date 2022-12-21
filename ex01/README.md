@@ -89,13 +89,13 @@ Open 3 terminals is annoying. To avoid it, we can write a `.launch` file, that a
 - [ ] Create a sensor node that subscribe the state space of model node and add a white noise.
 
 ## 8) Control Node
-During the lesson of 21/12/2022, **Giuseppe Valdes, Giorgia Comparato e Fabio Ammirata**, developed this [control node](kinematic_unicycle/src/controller). This algorithm control the motion of our unicycle in a straight line, using this control law:
+During the lesson of 21/12/2022, **Giuseppe Valdes, Giorgia Comparato and Fabio Ammirata**, developed this [control node](kinematic_unicycle/src/controller). This algorithm control the motion of our unicycle in a straight line, using this control law:
 
 $$ 
-\omega_k = -K \ y_k - y_k \ \bar{v} \ sinc(\theta_k)
+\omega_k = -K \ \theta_k - y_k \ \bar{v} \ sinc(\theta_k)
 $$
 
-When if we want to modify the control gain, we have to rebuild our C++ nodes and can be annoying. To avoid this waste of time, we can include the control gain in the ROS Parameter server. To do this, we can follow these steps:
+When we want to modify the control gain, we have to rebuild our C++ nodes and this can be annoying, and time consuming. To avoid this, we can include the control gains in the ROS Parameter server. To do this, we can follow these steps:
 
 - 1. Create a folder inside your package, called `config`. Type in your terminal:
 ```
@@ -108,6 +108,10 @@ When if we want to modify the control gain, we have to rebuild our C++ nodes and
 ros::NodeHandle node_obj;
 
 node_obj.getParam("<path_of_variable>", <name_of variable>)
+```
+- 4. Load the `.yaml` file in the ROS Parameter Server through the launch file. Simply add this line of code:
+```
+<rosparam file=$(find kinematic_unicycle)/config/params.yaml>
 ```
 
 In this way, you don't need to rebuild your package after a change of value. This is can be useful during the tuning process of a controller.
