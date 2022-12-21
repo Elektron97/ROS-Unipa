@@ -92,7 +92,7 @@ Open 3 terminals is annoying. To avoid it, we can write a `.launch` file, that a
 During the lesson of 21/12/2022, **Giuseppe Valdes, Giorgia Comparato e Fabio Ammirata**, developed this [control node](kinematic_unicycle/src/controller). This algorithm control the motion of our unicycle in a straight line, using this control law:
 
 $$ 
-\omega_k = -K y_k - y_k \bar{v} \sinc(\theta_k)
+\omega_k = -K \ y_k - y_k \ \bar{v} \ sinc(\theta_k)
 $$
 
 When if we want to modify the control gain, we have to rebuild our C++ nodes and can be annoying. To avoid this waste of time, we can include the control gain in the ROS Parameter server. To do this, we can follow these steps:
