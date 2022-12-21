@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>urdf_examples</name>
+  <version>0.0.0</version>
+  <description>The urdf_examples package</description>
+
+  <maintainer email="daniele@todo.todo">daniele</maintainer>
+
+  <license>TODO</license>
+
+  <!-- catkin -->
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <!-- build_depend -->
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rviz</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+
+  <!-- build_export_depend -->
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rviz</build_export_depend>
+  <build_export_depend>tf</build_export_depend>
+  <build_export_depend>urdf</build_export_depend>
+  <build_export_depend>xacro</build_export_depend>
+
+  <!-- exec_depend -->
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
