@@ -1,6 +1,7 @@
 /************************************************
  *                CONTROLLER NODE               *
  * This node was developed by Giuseppe Valdes,  *
+ * Giorgia Comparato and Fabio Ammirata,        *
  * in 21/12/2022.                               *
  ************************************************/
 
@@ -10,8 +11,8 @@
 #include "geometry_msgs/Twist.h"
 
 // Parameters
-#define QUEUE_SIZE 10
 #define FREQUENCY 1000.0
+#define QUEUE_SIZE 10
 
 // Tunable parameters
 int VBAR;
