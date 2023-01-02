@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>robot_2dof</name>
+  <version>0.0.0</version>
+  <description>The robot_2dof package</description>
+
+  <maintainer email="daniele@todo.todo">daniele</maintainer>
+
+  <license>TODO</license>
+
+  <!-- /// Dependencies /// -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- build_depend -->
+  <build_depend>gazebo_msgs</build_depend>
+  <build_depend>gazebo_plugins</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>gazebo_ros_control</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
+  <!-- build_export_depend -->
+  <build_export_depend>gazebo_msgs</build_export_depend>
+  <build_export_depend>gazebo_plugins</build_export_depend>
+  <build_export_depend>gazebo_ros</build_export_depend>
+  <build_export_depend>gazebo_ros_control</build_export_depend>
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
+
+  <!-- exec_depend -->
+  <exec_depend>gazebo_msgs</exec_depend>
+  <exec_depend>gazebo_plugins</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

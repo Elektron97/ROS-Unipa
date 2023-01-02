@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ascento">
+
+    <!-- \\\\\\ Build Ascento Robot \\\\\\ -->
+
+    <!-- \\\ Include Parameters and Macros \\\ -->
+    <xacro:include filename="$(find robot_2dof)/models/params_macro.xacro"/>
+
+    <!-- Chassis Link: Fictitious Link -->
+    <link name = "world"/>
+
+    <joint name="world_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="world"/>
+        <child link="chassis"/>
+    </joint>
+
+    <!--Chassis-->
+    <xacro:cylinder_link name="chassis" length="${base_height}" radius="${base_width/2}" 
+                            z="${base_height/2}" mass="${m1}" colour="Black"/>
+</robot>

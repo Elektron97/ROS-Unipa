@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <!-- \\\ Load YAML Files \\\ -->
+    <!--Declare the name of yaml file-->
+    <xacro:property name="yaml_file" value="$(find robot_2dof)/config/2dof_params.yaml"/>
+    <!--Load the parameters in a dictionary called "props"-->
+    <xacro:property name="props" value="${xacro.load_yaml(yaml_file)}"/>
+
+    <!--deg2rad conversion-->
+    <xacro:property name="deg2rad" value="0.01745329251"/>
+
+    <!--Limit of joints-->
+    <xacro:property name="joint_limit" value="${props['kinematic_params']['joint_limit']}"/>
+    <xacro:property name="joint_effort" value="${props['kinematic_params']['joint_effort']}"/>
+    <xacro:property name="joint_vel" value="${props['kinematic_params']['joint_vel']}"/>
+
+    <!-- \\\\\\ Geometrical and Dynamic Parameters. \\\\\\ -->
+    <!-- \\\ Link Properties \\\-->
+    <!-- Length -->
+    <xacro:property name="a1" value="${props['kinematic_params']['a1']}"/>
+    <xacro:property name="a2" value="${props['kinematic_params']['a2']}"/>
+
+    <!-- Radius -->
+    <xacro:property name="r1" value="${props['kinematic_params']['link_radius']}"/>
+    <xacro:property name="r2" value="${props['kinematic_params']['link_radius']}"/>
+    
+    <!-- Mass -->
+    <xacro:property name="m1" value="${props['dynamic_params']['m1']}"/>
+    <xacro:property name="m2" value="${props['dynamic_params']['m2']}"/>
+
+    <!-- Chassis Params-->
+    <xacro:property name="base_width" value="${props['kinematic_params']['base_width']}"/>
+    <xacro:property name="base_height" value="${props['kinematic_params']['base_height']}"/>
+
+    <!-- \\\\\\ MACRO \\\\\\ -->
+    <!-- Inertial Matrix of Cylinder Link -->
+    <xacro:macro name="inertial_matrix" params="mass radius length cogx:=0 cogy:=0 cogz:=0">
+        <inertial>
+            <mass value="${mass}"/>
+            <inertia ixx="${mass/12*(3*radius*radius + length*length) + mass*length*length/4}" ixy="0.0" ixz="0.0"
+                         iyy="${mass/12*(3*radius*radius + length*length) + mass*length*length/4}" iyz="0.0" izz="${mass*radius*radius/2}"/>
+
+            <origin xyz="${cogx} ${cogy} ${cogz}" rpy="0 0 0"/>
+        </inertial>
+    </xacro:macro>
+
+    <!--Cylinder Link-->
+    <xacro:macro name="cylinder_link" params="name length radius x:=0 y:=0 z:=0 phi:=0 theta:=0 psi:=0 mass cogx:=0 cogy:=0 cogz:=0 colour:=White">
+        <link name="${name}">
+            <!--Visual-->
+            <visual>
+                <!--Origin tag is the pose of Center of Mass-->
+                <origin xyz="${x} ${y} ${z}" rpy="${phi} ${theta} ${psi}" />
+                <geometry>
+                    <cylinder length="${length}" radius="${radius}"/>
+                </geometry>
+                <material name="${colour}"/>
+            </visual>
+            
+            <!--Collision: same as Visual-->
+            <collision>
+                <origin xyz="${x} ${y} ${z}" rpy="${phi} ${theta} ${psi}" />
+                <geometry>
+                    <cylinder length="${length}" radius="${radius}"/>
+                </geometry>
+                <material name="${colour}"/>
+            </collision>
+            
+            <!--Inertial Tensor-->
+            <xacro:inertial_matrix mass="${mass}" radius="${radius}" length="${length}" cogx="${cogx}" cogy="${cogy}" cogz="${cogz}"/>
+        </link>
+
+        <!-- Gazebo simulation settings -->
+        <gazebo reference="${name}">
+            <selfCollide>true</selfCollide>
+            <static>false</static>
+            <turnGravityOff>false</turnGravityOff>
+            <material>Gazebo/${colour}</material>
+        </gazebo>
+    </xacro:macro>
+</robot>
