@@ -26,6 +26,7 @@
     <xacro:property name="r2" value="${props['kinematic_params']['link_radius']}"/>
     
     <!-- Mass -->
+    <xacro:property name="m_base" value="${props['dynamic_params']['base_mass']}"/> <!--[kg]-->
     <xacro:property name="m1" value="${props['dynamic_params']['m1']}"/>
     <xacro:property name="m2" value="${props['dynamic_params']['m2']}"/>
 

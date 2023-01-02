@@ -112,3 +112,8 @@ Open your package and create the `config` folder. Create `2dof_params.yaml`. Her
 
 ## Build the Robot
 Now we can build our robot. Create the `models` directory and create `params_macro.xacro`. In this file, we import the parameters from the `yaml` file and define our macro, in order to write clean and **readble code**.
+
+Check our `.xacro` file.
+```
+check_urdf <(xacro 2DoF_arm.xacro)
+```
