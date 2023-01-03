@@ -6,7 +6,7 @@
     <arg name="gui"           default="true"    />
     <arg name="headless"      default="false"   />
     <arg name="debug"         default="false"   />
-    <arg name="model"         default="$(find robot_2dof)/models/2DoF_arm.xacro"/>
+    <arg name="model"         default="$(find robot_2dof)/models/2DoF_arm_passive.xacro"/>
     <arg name="verbose"       default="false"    />
 
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
@@ -21,10 +21,16 @@
 
     <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
+    <!-- Load File YAML-->
+    <rosparam file="$(find robot_2dof)/config/2dof_params.yaml" command="load"/>
+
     <!-- Spawn the robot into Gazebo: URDF gets converted to SDF -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
             args="-param robot_description -urdf -model 2dof_arm
             -J 2dof_arm::joint_1 0.1
-            -J 2dof_arm::joint_2 -0.075 " /> <!-- Initial Condition q(0)-->
+            -J 2dof_arm::joint_2 -0.075 "/>
+    
+    <!--<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+            args="-param robot_description -urdf -model 2dof_arm"/>-->
 
 </launch>

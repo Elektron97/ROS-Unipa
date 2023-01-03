@@ -19,7 +19,9 @@ dynamic_params:
   base_mass: 1   #[kg]
 
 simulation:
-  fs: 1000        #[Hz]
+  fs: 1000          #[Hz]
+  q1_init:  0.01    #[rad]
+  q2_init:  -0.07   #[rad]
 
 encoder:
   frequency:  100   #[Hz]
