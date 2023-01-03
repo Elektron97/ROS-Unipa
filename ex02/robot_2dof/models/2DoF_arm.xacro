@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ascento">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="2dof_arm">
 
-    <!-- \\\\\\ Build Ascento Robot \\\\\\ -->
+    <!-- \\\\\\ Build 2DoF Arm Robot \\\\\\ -->
 
     <!-- \\\ Include Parameters and Macros \\\ -->
     <xacro:include filename="$(find robot_2dof)/models/params_macro.xacro"/>
@@ -42,4 +42,17 @@
         <limit effort="${joint_effort}" velocity="${joint_vel}" lower="${-joint_limit}" upper="${joint_limit}"/>
     </joint>
 
+    <!-- \\\ Actuation \\\ -->
+    <!--<xacro:transmission_block joint_name="joint_1" location="1"/>
+    <xacro:transmission_block joint_name="joint_2" location="2"/>-->
+
+    <!-- \\\\\\ GAZEBO Plugins \\\\\\ -->
+    <!-- ros_control plugin -->
+    <!--<gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/2dof_arm</robotNamespace>
+            <updateRateHZ>${encoder_freq}</updateRateHZ>
+            <gaussianNoise>${encoder_noise}</gaussianNoise>
+        </plugin>
+    </gazebo>-->
 </robot>

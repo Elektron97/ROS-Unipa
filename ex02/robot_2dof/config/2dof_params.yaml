@@ -16,7 +16,11 @@ kinematic_params:
 dynamic_params:
   m1: 0.1         #[kg]
   m2: 0.1         #[kg]
-  base_mass: 10   #[kg]
+  base_mass: 1   #[kg]
 
 simulation:
   fs: 1000        #[Hz]
+
+encoder:
+  frequency:  100   #[Hz]
+  noise:      0.01

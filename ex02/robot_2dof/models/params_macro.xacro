@@ -34,6 +34,10 @@
     <xacro:property name="base_width" value="${props['kinematic_params']['base_width']}"/>
     <xacro:property name="base_height" value="${props['kinematic_params']['base_height']}"/>
 
+    <!-- \\\ Sensor Data \\\ -->
+    <xacro:property name="encoder_freq" value="${props['encoder']['frequency']}"/>
+    <xacro:property name="encoder_noise" value="${props['encoder']['noise']}"/>
+
     <!-- \\\\\\ MACRO \\\\\\ -->
     <!-- Inertial Matrix of Cylinder Link -->
     <xacro:macro name="inertial_matrix" params="mass radius length cogx:=0 cogy:=0 cogz:=0">
@@ -56,7 +60,6 @@
                 <geometry>
                     <cylinder length="${length}" radius="${radius}"/>
                 </geometry>
-                <material name="${colour}"/>
             </visual>
             
             <!--Collision: same as Visual-->
@@ -65,7 +68,6 @@
                 <geometry>
                     <cylinder length="${length}" radius="${radius}"/>
                 </geometry>
-                <material name="${colour}"/>
             </collision>
             
             <!--Inertial Tensor-->
@@ -79,5 +81,19 @@
             <turnGravityOff>false</turnGravityOff>
             <material>Gazebo/${colour}</material>
         </gazebo>
+    </xacro:macro>
+
+    <!--Transmission Block-->
+    <xacro:macro name="transmission_block" params="joint_name location Type:=Position">
+	  <transmission name="tran_${location}">
+	    <type>transmission_interface/SimpleTransmission</type>
+	    <joint name="${joint_name}">
+	      <hardwareInterface>hardware_interface/${Type}JointInterface</hardwareInterface>
+	    </joint>
+	    <actuator name="motor_${location}">
+	      <hardwareInterface>hardware_interface/${Type}JointInterface</hardwareInterface>
+	      <mechanicalReduction>1</mechanicalReduction>
+	    </actuator>
+	  </transmission>
     </xacro:macro>
 </robot>

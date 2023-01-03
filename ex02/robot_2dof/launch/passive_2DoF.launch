@@ -22,6 +22,9 @@
     <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
     <!-- Spawn the robot into Gazebo: URDF gets converted to SDF -->
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model ascento" />
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+            args="-param robot_description -urdf -model 2dof_arm
+            -J 2dof_arm::joint_1 0.1
+            -J 2dof_arm::joint_2 -0.075 " /> <!-- Initial Condition q(0)-->
 
 </launch>
