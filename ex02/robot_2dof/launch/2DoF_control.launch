@@ -34,7 +34,7 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
             args="-param robot_description -urdf -model 2dof_arm"/>
 
-    <!--Coupled Actuators-->
+    <!-- Actuators -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
         output="screen" ns="/2dof_arm" args="joint_state_controller joint1_controller joint2_controller"/>
 
