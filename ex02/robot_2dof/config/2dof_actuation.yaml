@@ -1,0 +1,20 @@
+2dof_arm:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 100
+  
+  # Position Controllers ---------------------------------------
+  joint1_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_1
+  
+  #Right Hip
+  joint2_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_2
+
+  # Gazebo Ros Control ----------------------------------------
+  gazebo_ros_control/pid_gains:
+    joint_1: {p: 100.0, i: 0.01, d: 10.0}
+    joint_2: {p: 100.0, i: 0.01, d: 10.0}

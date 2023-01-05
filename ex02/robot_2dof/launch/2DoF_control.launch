@@ -1,0 +1,47 @@
+<launch>
+
+    <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+    <arg name="paused"        default="false"    />
+    <arg name="use_sim_time"  default="true"    />
+    <arg name="gui"           default="true"    />
+    <arg name="headless"      default="false"   />
+    <arg name="debug"         default="false"   />
+    <arg name="model"         default="$(find robot_2dof)/models/2DoF_arm.xacro"/>
+    <arg name="verbose"       default="false"   />
+    <arg name="q1_init"       default="0.0"     />
+    <arg name="q2_init"       default="0.0"     />
+
+    <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug"         value="$(arg debug)"        />
+    <arg name="gui"           value="$(arg gui)"          />
+    <arg name="paused"        value="$(arg paused)"       />
+    <arg name="use_sim_time"  value="$(arg use_sim_time)" />
+    <arg name="headless"      value="$(arg headless)"     />
+    <arg name="verbose"       value="$(arg verbose)"      />
+    </include>
+
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+    <!-- Load File YAML-->
+    <rosparam file="$(find robot_2dof)/config/2dof_actuation.yaml" command="load"/>
+    
+    <!--<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+            args="-param robot_description -urdf -model 2dof_arm
+            -J 2dof_arm::joint_1 $(arg q1_init)
+            -J 2dof_arm::joint_2 $(arg q2_init) "/>-->
+
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+            args="-param robot_description -urdf -model 2dof_arm"/>
+
+    <!--Coupled Actuators-->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/2dof_arm" args="joint_state_controller joint1_controller joint2_controller"/>
+
+    <!-- convert joint states to TF transforms for rviz, etc -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+        <remap from="/joint_states" to="/2dof_arm/joint_states"/>
+    </node>
+
+</launch>

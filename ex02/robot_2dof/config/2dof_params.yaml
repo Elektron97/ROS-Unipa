@@ -6,23 +6,19 @@ kinematic_params:
   link_radius:  0.03      #[m]
   
   joint_limit:  1.0e+16   #[deg]
-  joint_effort: 300
-  joint_vel:    1
+  joint_effort: 30.0
+  joint_vel:    1.0
 
   base_width:   0.5       #[m]
   base_height:  0.05       #[m]
     
 
 dynamic_params:
-  m1: 0.1         #[kg]
-  m2: 0.1         #[kg]
-  base_mass: 1   #[kg]
+  m1: 1.0         #[kg]
+  m2: 1.0         #[kg]
+  base_mass: 1.0   #[kg]
 
 simulation:
   fs: 1000          #[Hz]
   q1_init:  0.01    #[rad]
   q2_init:  -0.07   #[rad]
-
-encoder:
-  frequency:  100   #[Hz]
-  noise:      0.01
