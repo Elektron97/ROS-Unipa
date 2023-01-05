@@ -4,7 +4,7 @@ In this exercise, we will implement a 2 DoF Planar Manipulator on Gazebo. Let's 
 ## Kinematics
 Thanks to DH convention, we can write the **Forward Kinematics** of this type of manipulator:
 
-![Scheme of a 2 DoF Planar Manipulator](robot_2DoF/docs/pics/2DoF_DH.png)
+![Scheme of a 2 DoF Planar Manipulator](robot_2dof/docs/pics/2DoF_DH.png)
 
 $$
 T_{2}^{0}(\theta_1, \theta_2) = 

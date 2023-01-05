@@ -22,3 +22,12 @@ simulation:
   fs: 1000          #[Hz]
   q1_init:  0.01    #[rad]
   q2_init:  -0.07   #[rad]
+
+imu:
+  mass: 0.001
+  ixx: 0.0001
+  iyy: 0.000001
+  izz: 0.0001
+  size: 0.001
+  freq: 100.0
+  noise: 0.001

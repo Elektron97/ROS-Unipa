@@ -60,4 +60,59 @@
             <robotNamespace>/2dof_arm</robotNamespace>
         </plugin>
     </gazebo>
+
+    <!-- IMU Plugins -->
+    <link name="imu_link">
+        <inertial>
+            <mass value="${imu_mass}"/>
+            <inertia ixx="${imu_ixx}" ixy="0.0" ixz="0.0"
+                            iyy="${imu_iyy}" iyz="0.0" izz="${imu_izz}"/>
+
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </inertial>
+
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="${imu_size} ${imu_size} ${imu_size}"/>
+            </geometry>
+        </visual>
+        
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="${imu_size} ${imu_size} ${imu_size}"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+        <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+        <origin xyz="0 0 0"/>
+        <parent link="link2"/>
+        <child link="imu_link"/>
+    </joint>
+
+    <!-- IMU inherit Sensor Plugin-->
+    <gazebo reference="imu_link">
+        <gravity>true</gravity>
+
+        <sensor name="imu_sensor" type="imu">
+            <always_on>true</always_on>
+            <update_rate>${imu_freq}</update_rate>
+            <visualize>true</visualize>
+            <topic>__default_topic__</topic>
+            <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+                <topicName>/2dof_arm/imu</topicName>
+                <bodyName>imu_link</bodyName>
+                <updateRateHZ>${imu_freq}</updateRateHZ>
+                <gaussianNoise>${imu_noise}</gaussianNoise>
+                <xyzOffset>0 0 0</xyzOffset>
+                <rpyOffset>0 0 0</rpyOffset>
+                <frameName>imu_link</frameName>
+                <initialOrientationAsReference>false</initialOrientationAsReference>
+            </plugin>
+            <pose>0 0 0 0 0 0</pose>
+        </sensor>
+    </gazebo>
 </robot>

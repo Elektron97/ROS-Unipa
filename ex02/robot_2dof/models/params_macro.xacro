@@ -35,6 +35,13 @@
     <xacro:property name="base_height" value="${props['kinematic_params']['base_height']}"/>
 
     <!-- \\\ Sensor Data \\\ -->
+    <xacro:property name="imu_mass" value="${props['imu']['mass']}"/>
+    <xacro:property name="imu_ixx" value="${props['imu']['ixx']}"/>
+    <xacro:property name="imu_iyy" value="${props['imu']['iyy']}"/>
+    <xacro:property name="imu_izz" value="${props['imu']['izz']}"/>
+    <xacro:property name="imu_size" value="${props['imu']['size']}"/>
+    <xacro:property name="imu_freq" value="${props['imu']['freq']}"/>
+    <xacro:property name="imu_noise" value="${props['imu']['noise']}"/>
 
     <!-- \\\\\\ MACRO \\\\\\ -->
     <!-- Inertial Matrix of Cylinder Link -->
