@@ -347,7 +347,7 @@ These are a lot of parameters of the simulation in Gazebo. We also assign to `mo
 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
         args="-param robot_description -urdf -model 2dof_arm"/>
 ```
-We can also assign initial value of the joint (i.e. $q(0)$).
+We can also assign initial value of the joint (i.e. q(0)).
 
 - *Launch Controllers*: For the actuation, we have to load the parameters of the controllers and launch the `controller_spawner` node.
 
