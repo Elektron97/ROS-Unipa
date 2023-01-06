@@ -21,8 +21,12 @@ R_z(\theta_1 + \theta_2) & r_2^{0} \\
 $$
 
 This homogeneous matrix of $SE(3)$ group, expresses the roto-traslation from a fixed frame $\{S_0\}$ to $\{S_2\}$. As you can see, the kinematic parameters of the kinematic chain are $a_1$, $a_2$. The joint variables are $\theta_1$ and $\theta_2$. We can also define the joint variable vector:
+
 $$
-q(t) = \begin{bmatrix} \theta_1(t) \\ \theta_2(t) \end{bmatrix}
+q(t) = \begin{bmatrix} 
+        \theta_1(t) \\ 
+        \theta_2(t) 
+       \end{bmatrix}
 $$
 
 The **Inverse Kinematics** can be easily computed using geometry. You can find the solutions [here](https://robotacademy.net.au/lesson/inverse-kinematics-for-a-2-joint-robot-arm-using-geometry/).
@@ -31,7 +35,11 @@ The **Inverse Kinematics** can be easily computed using geometry. You can find t
 From $T_2^0(q)$, we can compute also the Jacobian Matrix $J(q)$, that map the joint velocities in the twist of end-effector:
 
 $$
-\xi = \begin{bmatrix} v_x \\ v_y \\ \omega_z \end{bmatrix} = J(q) \dot{q}
+\xi = \begin{bmatrix} 
+        v_x \\ 
+        v_y \\ 
+        \omega_z 
+        \end{bmatrix} = J(q) \dot{q}
 $$
 
 $$
@@ -44,6 +52,7 @@ a_1 c_1 + a_2 c_{12} & a_2 c_{12} \\
 $$
 
 We can add also the joint limit in our model. So we can add the constraints:
+
 $$
 \bar{q}_{low} \leq q(t) \leq \bar{q}_{up}
 $$
@@ -54,6 +63,7 @@ Using the Lagrangian approach, we can write the Equation of Motion (EoM) of our 
 $$
 M(q) \ddot{q} + C(q, \dot{q}) \dot{q} + G(q) = \tau
 $$
+
 with boundary conditions: $q(0) = q_0 \quad \dot{q}(0) = \dot{q}_0$.
 
 The expressions of these matrices, can be found [here](https://www.ijeert.org/papers/v6-i11/3.pdf) or in whatever robotics book. The parameters of dynamics are:
@@ -62,16 +72,23 @@ The expressions of these matrices, can be found [here](https://www.ijeert.org/pa
 - $p_{CoG, i}$: position of the center of gravity (CoG) of the $i$-th link.
 - $g$: $9.81 \ m/s^2$.
 
-*Note that in a realistic simulation, we have to add some other terms in the EoM, like elastic or damping terms ($K q + D \dot{q}$) or external forces ($J^Tf$).*
+*Note that in a realistic simulation, we have to add some other terms in the EoM, like*:
+- $Kq+D\dot{q}$: *Elastic or damping terms* 
+- $J^{T}f$: *External Forces*.
 
 ## Discretization
 We can write our EoM in state-space form, defining:
-$$  x_1 = q  \\
-    x_2 = \dot{q} \\
-    u = \tau
+
+$$
+\begin{cases}
+x_1 = q  \\
+x_2 = \dot{q} \\
+u = \tau
+\end{cases}
 $$
 
 From that:
+
 $$
 \begin{cases}
     \dot{x_1} = x_2 \\ 
@@ -80,6 +97,7 @@ $$
 $$
 
 In compact form:
+
 $$
 \dot{x} = f(x) + g(x) u
 $$
