@@ -4,7 +4,6 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 1. Robot Operating System (ROS).
 2. Git.
 3. URDF and Gazebo.
-4. Using ROS with real robots with Raspberry.
 
 ## Contents:
 * [1. Course Organization](#1-course-organization)
@@ -13,10 +12,11 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 * [4. Download this repository](#4-download-this-repository)
 * [5. Exercises](#5-exercises)
 * [6. References and Books](#6-references-and-books)
+* [7. Projects](#7-projects)
 
 ## 1) Course Organization
-- [ ] **Week 7**: ROS Concepts: Nodes, Messages, Topics, Services and Bags.
-- [ ] **Week 9**: URDF and Gazebo.
+- [x] **Week 7**: ROS Concepts: Nodes, Messages, Topics, Services and Bags.
+- [x] **Week 9**: URDF and Gazebo.
 
 ## 2) Contacts
 - [Institutional Email](mailto:Daniele.Caradonna@santannapisa.it)
@@ -34,7 +34,8 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 2. From Github website, you can download `.zip` file.
 
 ## 5) Exercises
-- [ ] Exercise 1: Simulate Kinematic Model of Unicycle
+- [x] [Exercise 1](/ex01/README.md): Simulate Kinematic Model of Unicycle.
+- [ ] [Exercise 2](/ex02/README.md): Gazebo Simulation of a 2 DoF Robot Arm.
 
 ## 6) References and Books
 [1]: ROS official tutorials, avaible [online](http://wiki.ros.org/ROS/Tutorials).
@@ -43,3 +44,4 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 
 [3]: Mastering ROS for Robotics Programming, books avaible on [books](docs/books/Lentin_Joseph_Jonathan_Cacace_Mastering_ROS_for_Robotics_Programming.pdf) folder.
 
+## 7) Projects
