@@ -45,3 +45,4 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 [3]: Mastering ROS for Robotics Programming, books avaible on [books](docs/books/Lentin_Joseph_Jonathan_Cacace_Mastering_ROS_for_Robotics_Programming.pdf) folder.
 
 ## 7) Projects
+You can read the list of [projects](/projects/RO_Project_Proposals.pdf).
