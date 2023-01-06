@@ -414,7 +414,7 @@ These topics contains these ROS msgs:
 You can divide in 4 groups:
 1. **End-Effector Group**: Add to the 2 DoF Arm with a gripper as end-effector.
 
-2. **Inverse Kinematics Group**: Try to implement a Inverse Kinematics node. This node take as input a desired 2D pose ( $\begin{bmatrix} x & y & \varphi \end{bmatrix}^T$ ) of the end-effector and publish the joint angles.
+2. **Inverse Kinematics Group**: Try to implement a Inverse Kinematics node. This node take as input a desired 2D pose of the end-effector and publish the joint angles.
 
 3. **Control Group**: Try to implement a Trajectory Tracking of the manipulator. You can choice an example a circular trajectory or whatever trajectory that you want to implement.
 
