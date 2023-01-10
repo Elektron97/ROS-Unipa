@@ -35,7 +35,7 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 
 ## 5) Exercises
 - [x] [Exercise 1](/ex01/README.md): Simulate Kinematic Model of Unicycle.
-- [ ] [Exercise 2](/ex02/README.md): Gazebo Simulation of a 2 DoF Robot Arm.
+- [x] [Exercise 2](/ex02/README.md): Gazebo Simulation of a 2 DoF Robot Arm.
 
 ## 6) References and Books
 [1]: ROS official tutorials, avaible [online](http://wiki.ros.org/ROS/Tutorials).
