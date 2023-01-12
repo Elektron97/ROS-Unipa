@@ -18,6 +18,7 @@ Introduction to **R**obot **O**perating **S**ystem (ROS) for "*Mobile & Distribu
 - [x] **Week 7**: ROS Concepts: Nodes, Messages, Topics, Services and Bags.
 - [x] **Week 9**: URDF and Gazebo.
 
+You can find a presentation on the ROS Concepts in this [presentation](/docs/ppt/ROS_Concepts.pptx).
 ## 2) Contacts
 - [Institutional Email](mailto:Daniele.Caradonna@santannapisa.it)
 - [Personal Email](mailto:danele.caradonna@gmail.com)
