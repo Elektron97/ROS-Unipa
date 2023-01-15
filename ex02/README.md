@@ -113,7 +113,7 @@ As you know, you have to choose a proper sampling period $T_s$ to avoid instabil
 ## Creation of the ROS pkg
 After some theory, let's start to code. First, we create our package. So, type in your terminal:
 
-```
+```bash
 cd catkin_ws/src
 ```
 ```
@@ -136,7 +136,7 @@ Now we can build our robot. Create the `models` directory and create `params_mac
 
 ### Summarize of Xacro/URDF Syntax
 - **Import Parameters from YAML file**:
-```
+```xml
 <!-- \\\ Load YAML Files \\\ -->
 <!--Declare the name of yaml file-->
 <xacro:property name="yaml_file" value="$(find robot_2dof)/config/2dof_params.yaml"/>
@@ -145,22 +145,22 @@ Now we can build our robot. Create the `models` directory and create `params_mac
 ```
 
 - **Define a Parameter**:
-```
+```xml
 <xacro:property name="joint_limit" value="3.14"/>
 ```
 We can also assign the value from the `.yaml` file.
-```
+```xml
 <xacro:property name="joint_limit" value="${props['kinematic_params']['joint_limit']}"/>
 ```
 
 
 - **Check our** `.xacro` **file**.
-```
+```xml
 check_urdf <(xacro 2DoF_arm.xacro)
 ```
 
 - **Create a Link**: This is an example of a link, taken from [ROS Wiki](http://wiki.ros.org/urdf/XML/link).
-```
+```xml
  <link name="my_link">
    <inertial>
      <origin xyz="0 0 0.5" rpy="0 0 0"/>
@@ -195,7 +195,7 @@ As you can see, `<link>` tag has 3 fields:
 
 - **Create a Joint**: This is an example taken from [ROS Wiki](http://wiki.ros.org/urdf/XML/joint).
 
-```
+```xml
  <joint name="my_joint" type="revolute">
     <origin xyz="0 0 1" rpy="0 0 3.1416"/>
     <parent link="link1"/>
@@ -218,16 +218,16 @@ As you can see, it is possible to define a joint inside the `<joint>` tag. Insid
 ![Joint URDF Frame](robot_2dof/docs/pics/joint.png)
 
 - **Create a Macro**: You can simply define a macro with the tag `<xacro:macro>`. The template can be:
-```
+```xml
 <xacro:macro name="my_macro" params="param1 param2">
 ```
 Then, instantiate:
-```
+```xml
 <xacro:my_macro param1="1" param2="2"/>
 ```
 An example used in the `params_macro.xacro` is the inertial part of a cylinder link. In the following, the inertia tensor is computed with these [formula](https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors).
 
-```
+```xml
 <!-- Inertial Matrix of Cylinder Link -->
 <xacro:macro name="inertial_matrix" params="mass radius length cogx:=0 cogy:=0 cogz:=0">
     <inertial>
@@ -242,7 +242,7 @@ An example used in the `params_macro.xacro` is the inertial part of a cylinder l
 
 ### Control the 2DoF Arm
 You can actuate a joint, add in your URDF file, a `<transmission>` tag. Here, you can specify the type of the control you want to implement (Position Control, Velocity Control, Effort Control). It is convenient define a macro:
-```
+```xml
 <xacro:macro name="transmission_block" params="joint_name location Type:=Position">
     <transmission name="tran_${location}">
     <type>transmission_interface/SimpleTransmission</type>
@@ -259,7 +259,7 @@ You can actuate a joint, add in your URDF file, a `<transmission>` tag. Here, yo
 
 After this, you have to load a `Gazebo Plugin`, that is call `gazebo_ros_control`. This plugin implement the controllers (usually a PID) in your Gazebo Simulation. To do that, you have to create the `<gazebo>` tag.
 
-```
+```xml
 <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
         <robotNamespace>/2dof_arm</robotNamespace>
@@ -282,7 +282,7 @@ $$
 Where $\nu$ is the noise of the sensor. This formalism can be useful for **Sensor Fusion implementation** or the **study of the Observability**.
 
 To add a sensor, you have to include the plugin that implement the sensor. In the case of IMU:
-```
+```xml
 <gazebo reference="imu_link">
     <gravity>true</gravity>
 
@@ -311,7 +311,7 @@ Here you can specify the frequency, noise and the name of the topic.
 To launch the simulation, you have to write a launch file, that you can find [here](/robot_2dof/launch/2DoF_control.launch). Let's explain the code:
 
 - *Define Parameters*: We define also in the launch file local parameters, to readability.
-```
+```xml
 <!-- these are the arguments you can pass this launch file, for example paused:=true -->
 <arg name="paused"        default="false"    />
 <arg name="use_sim_time"  default="true"    />
@@ -328,7 +328,7 @@ These are a lot of parameters of the simulation in Gazebo. We also assign to `mo
 
 - *Launch Gazebo*: After this, we launch the simulation, calling the `empty_world.launch`, assigning its the parameters defined before.
 
-```
+```xml
 <include file="$(find gazebo_ros)/launch/empty_world.launch">
 <arg name="debug"         value="$(arg debug)"        />
 <arg name="gui"           value="$(arg gui)"          />
@@ -341,7 +341,7 @@ These are a lot of parameters of the simulation in Gazebo. We also assign to `mo
 
 - *Load Robot Model*: Using the node `spawn_urdf`, we are able to load our model in the `empty_world`.
 
-```
+```xml
 <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
@@ -351,7 +351,7 @@ We can also assign initial value of the joint (i.e. q(0)).
 
 - *Launch Controllers*: For the actuation, we have to load the parameters of the controllers and launch the `controller_spawner` node.
 
-```
+```xml
 <!-- Load File YAML-->
 <rosparam file="$(find robot_2dof)/config/2dof_actuation.yaml" command="load"/>
 
@@ -361,7 +361,7 @@ We can also assign initial value of the joint (i.e. q(0)).
 ```
 
 - *Publish Joint Information*: Thanks to `robot_state_publisher` node, we can publish the joint informations, simulating a *perfect encoder* (i.e. no noise).
-```
+```xml
 <!-- convert joint states to TF transforms for rviz, etc -->
 <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
     respawn="false" output="screen">
