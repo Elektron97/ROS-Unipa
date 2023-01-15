@@ -55,80 +55,80 @@ After package creation, your `hello_world_pkg` folder, you can write your nodes 
 You can find the entire node [here](hello_world_pkg/src/publisher.cpp). This node publish a `string` (*"Hello World"*) at a specific frequency, `NODE_FREQUENCY`. Now let's break the code down.
 
 - `Include` part: In this part we have to include the libraries used in our node.
- ```
+ ```c++
  #include "ros/ros.h"
  #include "std_msgs/String.h"
  ```
 First library includes the ROS client library, useful for the creation of a node, communications, parameters and so on. The second one imports the primitive type of msgs `string`. 
 - After create the `main` with the arguments (`argc`, `argv`), we can init the node.
-```
+```c++
 ros::init(argc, argv, "talker");
 ```
 Here, the name chosen for our node is `talker`. 
 - We have to also define the `NodeHandle` object. This object allows us to publish, subscribe, get parameters and so on.
-```
+```c++
 ros::NodeHandle node_obj;
 ```
 - After this, we can create the pub object. 
-```
+```c++
 ros::Publisher string_pub = node_obj.advertise<std_msgs::String>("string_topic", QUEUE_SIZE);
 ```
 This object tells the master that we are going to be publishing a message of type `std_msgs/String` on the topic `string_topic`. The `QUEUE_SIZE` is the size of a publishing queue. If we are publishing to quickly, it will buffer up a maximum of `QUEUE_SIZE` messages.
 - Now we can define `ros::Rate` object, that allows to specify a frequency of your loop.
-```
+```c++
 ros:::Rate loop_rate(NODE_FREQUENCY)
 ```
 - Define our msg object:
-```
+```c++
 std_msgs::String msg;
 msg.data = "Hello World!"
 ```
 - We can write the **main loop**. This loop is written as: `while(ros::ok())`. This instruction is essentially `while(1)`, but kill the node if you click Ctrl+C in the terminal. In this loop you have to:
 - Publish your msg:
-```
+```c++
 string_pub.publish(msg);
 ```
 - Sleep for the necessary time, in order to mantain the node frequency constant.
-```
+```c++
 loop_rate.sleep();
 ```
 - Finally, to visualization purpose, we can plot some information with `ROS_INFO()` function. It works like `printf()` function. So, if we can plot the Hello World string and the counter, we have to write:
-```
+```c++
 ROS_INFO("%s | %d-th msg", msg.data.c_str(), count);
 ```
 
 ### Build Publisher Node:
 To build your node, you have to modify the `CMakeLists.txt` file. So type at the bottom of the file:
-```
+```c++
 # This will create executable of the node
 add_executable(publisher src/publisher.cpp)
 # This will link executable to the appropriate libraries
 target_link_libraries(publisher ${catkin_LIBRARIES})
 ```
 After this, switch in the `catkin_ws` directory and type:
-```
+```bash
 catkin_make
 ```
 
 ### Execute the publisher node:
 Open a terminal and type:
-```
+```bash
 roscore
 ```
 This instruction **start ROS Master**. Open another terminal and type:
-```
+```bash
 rosrun hello_world_pkg publisher
 ```
 
 ## 5) Subscriber Node
 The code is similar, but with important differences:
 - You have to define a `ros::Subscriber` object, writing:
-```
+```c++
 ros::Subscriber string_sub = node_obj.subscribe("string_topic", QUEUE_SIZE, string_callBack);
 ```
 In this definition, you have to indicate the topic name (`string_topic`), the `QUEUE_SIZE` and finally the callback function (`string_callBack`). 
 - The callback function is a set of instructions executed when a topic is subscribed. Typically this function extracts the messages received and updates the inner global variables of node.
-```
+```c++
 void string_callBack(const std_msgs::String::ConstPtr& msg)
 {
     ROS_INFO("I heard: [%s]", msg->data.c_str());
@@ -137,14 +137,14 @@ void string_callBack(const std_msgs::String::ConstPtr& msg)
 In this case, the `string_callBack` simply extracts the msg and print the string.
 
 - In the main, in a subscriber node, you have to write:
-```
+```c++
 ros::spin();
 ```
 This instruction will enter in a loop, waiting and subscribing the topics.
 
 ### Build Subscriber Node
 As before, you have to add in the CMake file, the following code:
-```
+```make
 ## SUBSCRIBER
 # This will create executable of the node
 add_executable(subscriber src/subscriber.cpp)
@@ -152,7 +152,7 @@ add_executable(subscriber src/subscriber.cpp)
 target_link_libraries(subscriber ${catkin_LIBRARIES})
 ```
 Finally, you can build the package, typing:
-```
+```bash
 catkin_make
 ```
 
@@ -166,12 +166,12 @@ You can observe that the nodes communicate each other.
 
 ## 7) Launch the entire project in one terminal
 Opern 3 terminals can be annoyed. We can avoid this, writing a `.launch` file. This file launches the nodes for us, in a single terminal. To do that, create in the pkg folder aq new directory `launch`.
-```
+```bash
 cd ~/catkin_ws/src/hello_world_pkg
 mkdir launch
 ```
 Then write your `pub_sub.launch`, copying this:
-```
+```xml
 <!-- Launch file for Publisher and Subscriber Nodes-->
 <launch>
     <!-- Launch Publisher Node -->
@@ -183,6 +183,6 @@ Then write your `pub_sub.launch`, copying this:
 ```
 
 To launch the entire project, type in the terminal:
-```
+```bash
 roslaunch hello_world_pkg pub_sub.launch
 ```

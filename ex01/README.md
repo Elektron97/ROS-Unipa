@@ -46,13 +46,13 @@ The messages definition can be found on the previous links.
 
 ## 3) Create pkg 
 Let's create the package. Type in the terminal:
-```
+```bash
 ~/catkin_ws/src/ROS-Unipa$ catkin_create_pkg kinematic_unicycle roscpp std_msgs geometry_msgs
 ```
 
 ## 4) Create and build model node
 Switch in `src` folder inside the `kinematic_unicycle` pkg. Create a new file called `model.cpp` and write the node. You can find the code [here](kinematic_unicycle/src/model.cpp). After saving the `.cpp` node, open the CMake file. After clear from the automatic comments (`#i'm a comment`), add these lines to build our node.
-```
+```make
 # This will create executable of the node
 add_executable(model src/model.cpp)
 # This will link executable to the appropriate libraries
@@ -72,11 +72,11 @@ This instruction start rosmaster. Open another terminal and type:
 rosrun kinematic_unicycle model
 ```
 To control the simulated unicycle, execute the `teleop_twist_keyboard` [node](http://wiki.ros.org/teleop_twist_keyboard). To download it:
-```
+```bash
 sudo apt-get install ros-noetic-teleop-twist-keyboard
 ```
 Then, type:
-```
+```bash
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 ## 6) Creating Launch file
@@ -104,13 +104,13 @@ When we want to modify the control gain, we have to rebuild our C++ nodes and th
 - 2. Create a new `.yaml` file, as an example `params.yaml`. In this file, you can store all of your parameters. You can check the code [here](kinematic_unicycle/config/params.yaml).
 
 - 3. To get your parameters in your node, you need to use this syntax. 
-```
+```c++
 ros::NodeHandle node_obj;
 
 node_obj.getParam("<path_of_variable>", <name_of variable>)
 ```
 - 4. Load the `.yaml` file in the ROS Parameter Server through the launch file. Simply add this line of code:
-```
+```xml
 <rosparam file=$(find kinematic_unicycle)/config/params.yaml>
 ```
 
