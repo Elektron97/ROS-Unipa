@@ -155,7 +155,7 @@ We can also assign the value from the `.yaml` file.
 
 
 - **Check our** `.xacro` **file**.
-```xml
+```bash
 check_urdf <(xacro 2DoF_arm.xacro)
 ```
 
